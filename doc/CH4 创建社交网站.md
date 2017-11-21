@@ -62,7 +62,7 @@ django-admin startapp account
 
 ```python
 INSTALLED_APPS = [
-    css,
+    'account',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,13 +154,13 @@ def user_login(request):
                     login(request, user)
                     return HttpResponse('Authenticated successfully')
                 else:
-                    return HttpResponse(css)
+                    return HttpResponse('Disabled account')
             else:
                 return HttpResponse('Invalid login')
         else:
             form = LoginForm()
-            return render(request, css, {'form': form})
-
+            return render(request, 'account/login.html', {'form': form})
+       
 ```
 
 这是视图中基本登录的逻辑：当通过GET请求调用user_login视图时我们使用form=LoginForm()实例化一个新的登录表单并将其展示在模板中。当用户通过POST提交表单时，我们实现以下操作：
@@ -183,25 +183,24 @@ from  django.conf.urls import url
 from . import views
 
 urlpatterns = [url(r'^login/$', views.user_login, name='login'),
-
+    
 ]
 ```
 
 编辑bookmarks下面的urls.py文件并添加accounts应用中的URL模式：
 
-```python
-from django.conf.urls import url,include
+```python 
+from django.conf.urls import url, include
 from django.contrib import admin
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^account/',include('account.urls')),
-]
+urlpatterns = [url(r'^admin/', admin.site.urls), 
+               url(r'^account/',include('account.urls',namespace='account',
+                                                       app_name='account')), ]
 ```
 
-现在，可以通过URL访问师徒了。现在可以为视图创建模板了。由于这个项目不必包含任何模板，我们可以从创建登录模板可以扩展的基本模板开始。在account应用目录下新建以下文件和路径：
+现在，可以通过URL访问视图了。我们为视图创建模板了。由于这个项目不必包含任何模板，我们可以从创建登录模板可以扩展的基本模板开始。在account应用目录下新建以下文件和路径：
 
-![structure](figures/CH4/source.png)
+![structure](../../profile/django_by_example/bookmarks/doc/figures/CH4/structure.png)
 
 编辑base.html文件，并添加以下代码：
 
@@ -216,28 +215,6 @@ urlpatterns = [
 <body>
 <div id="header">
     <span class="logo">Bookmarks</span>
-    {% if request.user.is_authenticated %}
-    <ul class="menu">
-      <li {% ifequal section 'dashboard' %}class="selected"{% endifequal %}>
-        <a href="{% url 'account:dashboard' %}">My dashboard</a>
-      </li>
-      <li {% ifequal section "images" %}class="selected"{% endifequal %}>
-        <a href="#">Images</a>
-      </li>
-      <li {% ifequal section "people" %}class="selected"{% endifequal %}>
-        <a href="#">People</a>
-      </li>
-    </ul>
-  {% endif %}
-
-  <span class="user">
-    {% if request.user.is_authenticated %}
-      Hello {{ request.user.first_name }},
-      <a href="{% url 'account:logout' %}">Logout</a>
-    {% else %}
-      <a href="{% url 'account:login' %}">Log-in</a>
-    {% endif %}
-  </span>
 </div>
 <div id="content">
     {% block content %}
@@ -384,8 +361,12 @@ urlpatterns = [# previous login view
       {{ form.as_p }}
       {% csrf_token %}
       <input type="hidden" name="next" value="{{ next }}" />
+      <div >
+        <a href="{% url 'account:password_reset' %}" class="rt forget">Forgotten your password？</a>
+      </div>
       <p><input type="submit" value="Log-in"></p>
     </form>
+
   </div>
 {% endblock %}
 ```
@@ -642,15 +623,16 @@ class PasswordResetConfirm(PasswordResetConfirmView):
 from django.contrib.auth.views import PasswordResetCompleteView
 from django.contrib.auth.views import PasswordResetDoneView
 
-	url(r'^password_reset/$', views.PasswordReset.as_view(),
+
+    url(r'^password_reset/$', views.PasswordReset.as_view(),
         name='password_reset'),
     url(r'^password_reset/done/$', PasswordResetDoneView.as_view(),
         name='password_reset_done'),
-    url(r'^password_reset/confirm/(?<uidb64>[-\w]+)/(?<token>[-\w]+)/$',
-        views.PasswordResetConfirm.as_view(), name='parssword_reset_confirm'),
+    url(r'^password_reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$',
+        views.PasswordResetConfirm.as_view(), name='password_reset_confirm'),
     url(r'^password_reset/complete/$', PasswordResetCompleteView.as_view(),
         name='password_reset_complete'),
-
+        
 ```
 
 现在在account应用的templates/registration/目录下新建名为password_reset_form.html文件并添加以下代码：
@@ -751,7 +733,7 @@ EMAIL_USE_TLS = True
 
 然后，在开发服务器中，我们可以配置Django将e-mail输出到标准输出而不是通过SMTP服务器发送。Django提供一个e-mail后端向console输出e-mail。编辑项目的settings.py文件并添加以下代码：
 
-```python
+```python 
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 ```
 
@@ -790,6 +772,7 @@ Someone asked for password reset for email 80884678@qq.com. Follow the link belo
 http://127.0.0.1:8000/account/password_reset/Mg/4rb-b850efa655cc38f792e7/
 Your username, in case you've forgotten: testuser
 --===============0507565557010827787==--
+
 ```
 
 e-mail使用我们之前创建的password_reset_email.html模板渲染。
