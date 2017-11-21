@@ -62,7 +62,7 @@ django-admin startapp account
 
 ```python
 INSTALLED_APPS = [
-    'account',
+    css,
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -154,12 +154,12 @@ def user_login(request):
                     login(request, user)
                     return HttpResponse('Authenticated successfully')
                 else:
-                    return HttpResponse('Disabled account')
+                    return HttpResponse(css)
             else:
                 return HttpResponse('Invalid login')
         else:
             form = LoginForm()
-            return render(request, 'account/login.html', {'form': form})
+            return render(request, css, {'form': form})
 
 ```
 
