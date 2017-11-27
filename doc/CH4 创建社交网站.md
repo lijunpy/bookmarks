@@ -4,15 +4,16 @@
 
 这一章将包含以下内容：
 
-使用权限框架
+- 使用权限框架
 
-创建用户注册视图
+- 创建用户注册视图
 
-使用自定义简介模型扩展User模型
+- 使用自定义简介模型扩展User模型
 
-使用python-social-auth添加社交权限
+- 使用python-social-auth添加社交权限
 
-我们从创建新的项目开始。
+- 我们从创建新的项目开始。
+
 
 ##创建一个社交网站项目
 
@@ -823,4 +824,603 @@ e-mail使用我们之前创建的password_reset_email.html模板渲染。
 ![password_reset_invalid](figures/CH4/password_reset_invalid.png)
 
 现在，我们已经在项目中集成了Django权限框架视图。这些视图适用于大多数情况。当然，你也可以使用自己的视图实现其他行为。
+
+## 用户注册和用户页面
+
+已经注册过的用户现在可以登录、退出、更改密码和忘记密码时重置密码。现在我们新建视图来帮助用户注册。
+
+### 用户注册
+
+我们新建一个简单视图来帮助用户登录网站。首先，我们需要新建一个表单来帮助用户输入用户名、真实姓名及密码。编辑account应用下的forms.py文件，并添加以下代码：
+
+```python
+from django.contrib.auth.models import User
+
+
+class UserRegistrationForm(forms.ModelForm):
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repeat password',
+                                widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'email')
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            raise forms.ValidationError('Password don\'t match')
+        return cd['password2']
+```
+
+我们为User模型新建了一个模型表单。在我们的表单中包括模型的username、first_name、email字段。这些字段将根据它们的模型字段类型进行验证。比如，如果一个用户选择了一个已经存在的用户名，将会引发验证错误，我们为用户输入密码及确定密码添加了两个额外的字段password和password2。clean_password2()方法将检查第二个密码是否与第一个密码一致，如果不一致则验证失败。可以为模型表单的任意字段提供`clean_<filedname>()`函数来为该字段处理数值并或引发异常。表单也包括一个通用clean()方法来处理整个表单，它用于验证具有相互依赖关系的字段。
+
+Django同时提供UserCreationForm（位于django.contrib.auth.forms)，这个表单与我们刚刚创建的表单非常类似。
+
+编辑account应用的views.py文件并添加以下代码：
+
+```python
+from .forms import LoginForm, UserRegistrationForm
+
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # save the User object
+            new_user.save()
+            return render(request, 'account/register_done.html',
+                          {'new_user': new_user})
+        else:
+            return render(request, 'account/register.html',
+                          {'user_form': user_form})
+    else:
+        user_form = UserRegistrationForm()
+        return render(request, 'account/register.html',
+                      {'user_form': user_form})
+```
+
+创建用户账户的视图非常简单。为了安全起见，我们没有保存用户输入的原始密码，而是通过使用User模型的set_password()方法对用户密码进行加密后保存。
+
+现在，编辑account应用的urls.py文件，并添加以下URL模式：
+
+```python
+url(r'^register/$',views.register,name='register'),
+```
+
+最后，在templates/account目录下，新建名为register.html的文件，并添加以下代码：
+
+```HTML
+{% extends "base.html" %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+    <h1>Create an account</h1>
+    <p>Please,sign up using the following form:</p>
+    <form action="." method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+    </form>
+
+{% endblock %}
+```
+
+在相同目录下，新建名为register_done.html文件，并添加以下代码：
+
+```python
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+    <h1>Welcome {{ new_user.first_name }}!</h1>
+    <p>Please,sign up using the following form:</p>
+    <p>Your account has been successfully created. Now you can <a
+            href="{% url "account:login" %}">log in</a>.</p>
+{% endblock %}
+```
+
+现在，在浏览器中打开http://127.0.0.1:8000/account/register/，将会看到以下页面:
+
+![create_an_account](figures/CH4/create_an_account.png)
+
+为新用户输入详细信息并点击Create my account按钮。如果字段验证成功，将创建用户，您将看到以下页面：
+
+![account welcome](figures/CH4/profiles.png)
+
+点击log in链接跳转到登录页面，然后使用新建的用户名和密码进行登录已验证是否成功注册。
+
+现在，可以将注册链接添加到登录模板中，编辑registration/login.html模板，将模板更改为：
+
+```HTML
+{% extends "base.html" %}
+
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+  <h1>Log-in</h1>
+  {% if form.errors %}
+    <p>
+      Your username and password didn't match.
+      Please try again.
+    </p>
+  {% else %}
+      <p>Please, use the following form to log-in. If you don't have an account<a href="{% url 'account:register' %}">register here</a></p>
+  {% endif %}
+  <div class="login-form">
+    <form action="{% url 'account:login' %}" method="post">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      <div >
+        <a href="{% url 'account:password_reset' %}" class="rt forget">Forgotten your password？</a>
+      </div>
+      <p><input type="submit" value="Log-in"></p>
+    </form>
+
+  </div>
+{% endblock %}
+```
+
+这样可以从登录页面跳转到注册页面。
+
+### 扩展用户模型
+
+我们在处理用户账户时发现Django权限框架的User模型适用于常用案例。User模型包括基本字段，但是，我们希望扩展User模型来添加更多数据。最好的实现方法是新建一个profile模型来包含所有的额外字段并添加一个与Django的user模型的一对一关系。
+
+编辑account应用的models.py文件，并添加以下代码：
+
+```python
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.conf import settings
+from django.db import models
+
+
+# Create your models here.
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL)
+    date_of_birth = models.DateField(blank=True, null=True)
+    photo = models.ImageField(upload_to='users/%Y/%m/%d', blank=True)
+
+    def __str(self):
+        return 'Profile for user {}'.format(self.user.username)
+```
+
+注意：
+
+为了保证代码通用，我们使用get_user_model()方法获取用户模型，在模型中建立相关关系时使用AUTH_USER_MODEL设置来表示（而不是直接使用User模型）。
+
+user一对一字段允许我们将user和profile联系在一起。photo字段是一个ImageField字段。我们需要安装Python模块PIL(Python Imaging Library)或Pillow来管理图像，我们可以通过以下命令安装Pillow：
+
+```python
+pip install Pillow
+```
+
+我们还需要在项目的settings.py文件中添加以下设置来在开发服务器中保存用户上传的图像文件：
+
+```python
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+```
+
+MEDIA_URL是用户上传的媒体文件的基础URL，MEDIA_ROOT是文件的本地路径。我们根据项目路径动态创建路径来保证代码更加通用。
+
+现在，编辑bookmarks项目的urls.py文件并将代码修改为：
+
+```python
+from django.conf import settings
+from django.conf.urls import url, include
+from django.conf.urls.static import static
+from django.contrib import admin
+
+urlpatterns = [url(r'^admin/', admin.site.urls), 
+               url(r'^account/',include('account.urls',namespace='account',app_name='account')), ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+这样，Django的开发服务器可以在开发期间管理媒体文件服务。
+
+static()帮助函数用于开发过程但不能用于生产。不要在生产过程中使用Django处理静态文件。
+
+打开shell并运行以下命令来新建模型迁移文件：
+
+```python 
+python manage.py makemigrations
+```
+
+我们将看到这些输出：
+
+```
+Migrations for 'account':
+  account/migrations/0001_initial.py
+    - Create model Profile
+```
+
+然后同步数据库：
+
+```python
+python manage.py migrate
+```
+
+我们将看到以下输出：
+
+```
+Operations to perform:
+  Apply all migrations: account, admin, auth, contenttypes, sessions
+Running migrations:
+  Applying account.0001_initial... OK
+```
+
+编辑account应用的admin.py文件，并将Profile模型注册到admin网站：
+
+```python
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.contrib import admin
+
+from .models import Profile
+
+
+# Register your models here.
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ['user', 'date_of_birth', 'photo']
+
+
+admin.site.register(Profile, ProfileAdmin)
+```
+
+运行python manage.py runserver运行开发服务器，现在可以在admin网站中看到Profile模型了：
+
+![profiles](figures/CH4/profiles.png)
+
+现在我们实现在网站上编辑profile。在account应用的forms.py文件中添加以下代码:
+
+```python
+from .models import Profile
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('date_of_birth', 'photo')
+```
+
+添加的表单包括:
+
+UserEditForm：允许用户编辑他们存储在内置User模型中的first_name、last_name和email。
+
+ProfileEditForm：允许用户编辑保存到自定义Profile模型中的额外内容。用户将能够编辑他们的出生日期并为自己的主页上传照片。
+
+编辑account应用的views.py文件，并导入Profile模型：
+
+```python 
+from .models import Profile
+```
+
+并在register视图的new_user.save()之前添加以下代码：
+
+```python
+profile = Profile.objects.create(user=new_user)
+```
+
+用户注册时，我们为用户创建了一个空的profile。当然我们还可以使用admin网站为新建Profile模型之前的用户手动创建Profile对象。
+
+现在，我们将允许用户编辑他们的profile。在views.py文件中添加以下内容:
+
+```python
+from .forms import LoginForm, UserRegistrationForm, UserEditForm, \
+    ProfileEditForm
+
+
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+            data=request.POST, files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+    else:
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+    return render(request, 'account/edit.html',
+                  {'user_form': user_form, 'profile_form': profile_form})
+```
+
+这里使用login_required装饰器来限制授权用户编辑自己的文件。在这种情况下，我们使用了两个模型表单：UserEditForm存储内置User模型的数据，ProfileEditForm存储额外的文件数据。为了验证提交的数据，我们检查两个表单的is_valid()方法是否都为True。在这种情况下，我们保存两个表单来更新数据库中对应的记录。
+
+在account应用的urls.py文件中添加以下URL模式:
+
+```python
+url(r'^edit/$',views.edit,name='edit'),
+```
+
+最后，为视图创建模板，在templates/account目录下新建edit.html文件，并添加以下代码：
+
+```python
+{% extends "base.html" %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+    <h1>Edit your account</h1>
+    <p>You can edit your account using the following form:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Save changes"></p>
+    </form>
+{% endblock %}
+```
+
+> 注意：
+>
+> 我们在form元素中加入了enctype="multipart/form-data"来实现文件上传。我们使用一个HTML表单提交两个表单：user_form和profile_form。
+
+注册一个新的用户并在浏览器中打开http://127.0.0.1:8000/account/edit/ ，将看到以下页面:
+
+
+
+现在，我们可以编辑dashboard页面来添加编辑个人资料和更改密码页面。打开account/dashboard.html模板并将代码改为：
+
+```python 
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <h1>Dashboard</h1>
+    <p>Welcome to your dashboard.You can
+        <a href="{% url "account:edit" %}">edit your profile</a> or
+        <a href="{% url "account:password_change" %}">change your password</a>.
+    </p>
+{% endblock %}
+```
+
+用户现在可以在dashboard中访问个人资料编辑页面和更改密码页面了。
+
+### 使用用户自定义模型
+
+Django还提供使用自定义模型代替整个User模型的方法。自定义用户模型需要继承AbstractUser类，它将默认用户的所有操作封装到抽象类中。详细资料见https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#substituting-a-custom-user-model。
+
+使用自定义用户模型将更加灵活，但是将更加与使用User模型的即插即用应用的集成难度。
+
+### 使用消息框架
+
+我们处理用户动作时，可能希望告诉用户动作结果。Django有一个内置消息框架来帮助我们显示一次性提示。消息框架位于django.contrib.messages，并且在新建项目时默认包含在了settings.py文件的INSTALLED_APPS中了。我们还看到settings.py的中MIDDLEWARE_CLASSES中包含django.contrib.message.middlewarer.MessageMiddleware中间件。使用消息框架添加消息的方法很简单。消息保存在数据库中并在用户回答第二个问题时显示。我们可以在视图的消息框架中导入消息模块并使用快捷方式添加新消息：
+
+```python
+from django.contrib import messages
+
+messages.error(request,'Something Went wrong')
+```
+
+你可以使用add_message()或者以下的快捷方式新建消息：
+
+success()：动作完成后的成功消息。
+
+info()：消息信息。
+
+warning()：暂时没有失败但是可能会导致失败。
+
+error()：没有成功的操作或一些失败。
+
+debug()：在生产环境中将会移除或忽略debug消息。
+
+我们来为用户显示信息。由于消息框架用于整个项目。我们可以在基础模板中为用户显示消息。打开base.html模板并在id为header的<div>元素和id为content的<div>元素中添加以下代码：
+
+```
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">✖</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+```
+
+这个消息框架内置内容处理器来为request内容添加message变量。因此，我们可以在模板中使用这个变量来为用户显示当前信息。
+
+现在，我们通过修改edit视图来使用消息框架。编辑account应用的views.py文件并修改edit函数:
+
+```python
+@login_required
+def edit(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(instance=request.user, data=request.POST)
+        profile_form = ProfileEditForm(instance=request.user.profile,
+                                       data=request.POST, files=request.FILES)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Profileupdated successfull')
+    else:
+        messages.error(request, 'Error updating your profile')
+        user_form = UserEditForm(instance=request.user)
+        profile_form = ProfileEditForm(instance=request.user.profile)
+    return render(request, 'account/edit.html',
+                  {'user_form': user_form, 'profile_form': profile_form})
+```
+
+当用户成功更新自己的资料后显示成功信息。如果表单无效则会显示失败信息。
+
+在浏览器中打开http://127.0.0.1:8000/account/edit/并且编辑资料。当文件成功更新后，应该看到下面的消息：
+
+![vailid](figures/CH4/vailid.png)
+
+表单无效时，应该可以看到以下消息:
+
+![error](figures/CH4/invalid.png)
+
+## 创建一个自定义权限后端
+
+Django可以使用其它权限后端。AUTHENTICATION_BACKENDS设置包括项目的权限后端。默认情况下，将使用这个设置:
+
+```python
+('django.contrib.auth.backends.ModelBackend',)
+```
+
+默认ModelBackend使用django.contrib.auth的User模型使用数据库对用户进行授权，这将适用于大多数项目。然而，你可以创建自定义后端来使用LDAP目录或其他系统对用户进行授权。
+
+更多自定义权限相关消息请阅读https://docs.djangoproject.com/en/1.11/topics/auth/customizing/#other-authentication-sources。
+
+每次使用django.contrib.auth的authenticate()函数时，Django都尝试使用AUTHENTICATION_BACKENDS中的每一个后端直到其中一个可以对用户授权。只有所有的后端都失败后，他/她将无法登陆网站。
+
+Django提供了一个简单的方法来定义自己的权限后端。一个权限后端是一个提供下面两个方法的类：
+
+- authenticate()：输入用户凭证。如果用户成功授权则返回True，否则返回False。
+- get_user()：输入用户ID参数并要返回User对象。
+
+创建自定义权限后端与写执行方法的Python类一样简单。我们将创建权限后端帮助用户在网站中使用email而不是用户名登录。
+
+在account应用目录下新建一个名为authentication.py的文件，并添加以下代码：
+
+```python
+from django.contrib.auth.models import User
+
+
+class EmailAuthBackend(object):
+    """
+    Authenticate using e-mail account.
+    """
+
+    def authenticate(self, username=None, password=None):
+        try:
+            user = User.objects.get(email=username)
+            if user.check_password(password):
+                return user
+            return None
+        except User.DoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        try:
+            return User.objects.get(pk=user_id)
+        except User.DoesNotExist:
+            return None
+```
+
+这是一个简单的后端，authenticate()方法接收username和password参数，我们将使用不同的参数，但是我们使用username和password来保证后端可以直接在权限框架视图中使用。代码这样工作：
+
+authenticate()：尝试使用e-mail地址获取用户并使用User模型内置的check_password()方法检查密码。这个方法对密码进行哈希处理并与数据库中的密码进行比较。
+
+get_user()：通过user_id参数中设置的ID获取用户。Django使用后端帮授权的用户为用户session获取User对象。
+
+编辑项目的settings.py文件并添加以下内容:
+
+```python
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+    )
+```
+
+我们保存默认的ModelBackend来通过用户和密码进行登录，还可以使用email权限后端。现在在浏览器中打开http://127.0.0.1:8000/account/login/。Django将尝试使用每个后端验证用户，现在你也可以使用用户名或者e-mail进行登录。
+
+> 注意:
+>
+> AUTHENTICATION_BACKENDS中的后端列表顺序很重要。如果多个后端都验证用户凭证有效，Django将运行第一个验证成功的后端。
+
+## 为网站添加社交权限
+
+我们可能需要使用微博、豆瓣(原文为Facebook、Twitter、Google，考虑到需要翻墙，这里更改为微博等)等服务为自己的网站添加社交权限。Python-social-auth是一个简化网站添加社交权限过程的Python模块(该模块在2016年12月3日弃用，代码迁移到python-social-auth-organization，python-social-auth-organization应用于Django的框架为social-auth-app-django)。通过使用这个模块，可以使用户通过这些服务的账号登录网站。我们可以从以下地址找到这个模块的代码https://github.com/python-social-auth/social-app-django。
+
+这个模块为各种的Python框架（包括Python)提供社交权限后端。
+
+我们可以通过pip安装这个模块，打开console并运行以下命令：
+
+```python 
+pip install social-auth-app-django
+```
+
+然后，将social.django_app.default添加到项目settings.py文件的INSTALLED_APPS中：
+
+```python 
+INSTALLED_APPS = ['account',
+                  'django.contrib.admin',
+                  'django.contrib.auth',
+                  'django.contrib.contenttypes',
+                  'django.contrib.sessions',
+                  'django.contrib.messages',
+                  'django.contrib.staticfiles',
+                  'social_django' ]
+```
+
+这是为Django项目添加python-social-auth的默认应用，现在，运行以下命令来将python-social-auth的模型同步到数据库：
+
+```python 
+python manage.py migrate	
+```
+
+你应该看到default应用的迁移：
+
+```python
+Operations to perform:
+  Apply all migrations: account, admin, auth, contenttypes, sessions, social_django
+Running migrations:
+  Applying social_django.0001_initial... OK
+  Applying social_django.0002_add_related_name... OK
+  Applying social_django.0003_alter_email_max_length... OK
+  Applying social_django.0004_auto_20160423_0400... OK
+  Applying social_django.0005_auto_20160727_2333... OK
+  Applying social_django.0006_partial... OK
+  Applying social_django.0007_code_timestamp... OK
+  Applying social_django.0008_partial_timestamp... OK
+```
+
+python-social-auth为很多服务提供后端，可以在这里查找支持的所有后端http://python-social-auth.readthedocs.io/en/latest/intro.html#features。
+
+我们将添加社交后端实现微博、豆瓣登录。
+
+我们需要为项目添加社交登录URL模式。打开bookmarks项目的urls.py文件，并添加以下代码：
+
+```python
+urlpatterns = [url(r'^admin/', admin.site.urls),
+               url(r'^account/',include('account.urls',namespace='account')),
+               url(r'^', include('social_django.urls', namespace='social'))]
+```
+
+社交权限正常工作需要一个主机名称，这是由于部分社交服务不允许重定向到127.0.0.1或者localhost。为了修正这个问题，如果你使用的是Linux或者Mac OS，编辑/etc/hosts文件并添加下面一行:
+
+```
+127.0.0.1 mysite.com
+```
+
+这条命令告诉电脑将mysite.com主机名指向自己的机器。如果使用Windows，hosts文件的位置是C:\Winwows\System32\Drivers\etc\hosts。 
+
+为了验证主机重定向生效，在浏览器中打开http://mysite.com:8000/account/login/，如果出现应用的登录页面就一切正常。
+
+### 使用..登录
+
+后续补充
+
+
+
+##总结
+
+在这一章中，我们学习了任何为网站创建权限系统以及如何创建个人页面。你还可以为网站添加社交权限。
+
+在下一章中，我们将学习如何创建图像bookmarking系统，生成图像缩略图，并且创建AJAX视图。
 
