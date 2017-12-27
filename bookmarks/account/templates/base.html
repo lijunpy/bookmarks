@@ -14,7 +14,7 @@
                 <a href="{% url 'account:dashboard' %}">My dashboard</a>
             </li>
             <li {% ifequal section "images" %}class="selected"{% endifequal %}>
-                <a href="#">Images</a>
+                <a href="{% url 'images:list' %}" >Images</a>
             </li>
             <li {% ifequal section "people" %}class="selected"{% endifequal %}>
                 <a href="#">People</a>
@@ -48,7 +48,7 @@
     {% endblock %}
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src=" https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
 <script src=" http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
 <script>
     var csrftoken = $.cookie('csrftoken');

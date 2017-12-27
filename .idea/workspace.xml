@@ -2,44 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0f68bb2-765d-4b7b-9919-ba6c0c8d9960" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/authentication.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/static/css/base.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/register.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/register_done.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/logged_out.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/login.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_change_done.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_change_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_reset_complete.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_reset_confirm.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_reset_done.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_reset_email.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/templates/registration/password_reset_form.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/account/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/static/css/bookmarklet.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/templates/bookmarklet_launcher.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/create.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/list_ajax.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bookmarks/images/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/db.sqlite3" afterPath="$PROJECT_DIR$/bookmarks/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/figures/CH4/structure.png" afterPath="$PROJECT_DIR$/doc/figures/CH4/structure.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/account/admin.py" afterPath="$PROJECT_DIR$/bookmarks/account/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/account/models.py" afterPath="$PROJECT_DIR$/bookmarks/account/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html" afterPath="$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/account/templates/base.html" afterPath="$PROJECT_DIR$/bookmarks/account/templates/base.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/bookmarks/settings.py" afterPath="$PROJECT_DIR$/bookmarks/bookmarks/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/bookmarks/urls.py" afterPath="$PROJECT_DIR$/bookmarks/bookmarks/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/CH4 创建社交网站.md" afterPath="$PROJECT_DIR$/doc/CH4 创建社交网站.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/admin.py" afterPath="$PROJECT_DIR$/bookmarks/images/admin.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js" afterPath="$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html" afterPath="$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/urls.py" afterPath="$PROJECT_DIR$/bookmarks/images/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bookmarks/images/views.py" afterPath="$PROJECT_DIR$/bookmarks/images/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/CH5 在网站上分享内容.md" afterPath="$PROJECT_DIR$/doc/CH5 在网站上分享内容.md" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,22 +24,74 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/account/urls.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="bookmarklet.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            <state relative-caret-position="420">
+              <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+              <folding>
+                <marker date="1513589844000" expanded="true" signature="600:607" ph="×" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/create.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="17" column="17" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="17" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../django/Django By Example/Django By Example-code/Django_By_Example_Code/Chapter 5/bookmarks/account/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="101" lean-forward="false" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="101" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/account/views.py">
+        <entry file="file://$PROJECT_DIR$/bookmarks/images/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="102" column="15" lean-forward="false" selection-start-line="102" selection-start-column="15" selection-end-line="102" selection-end-column="15" />
+            <state relative-caret-position="-374">
+              <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookmarks/manage.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -73,21 +100,9 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+            <state relative-caret-position="218">
+              <caret line="34" column="60" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="60" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bookmarklet.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1512523736000" expanded="true" signature="600:607" ph="×" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -95,21 +110,9 @@
       <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="435">
+              <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/images/models.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -117,40 +120,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bookmarks/images/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/images/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bookmarks/images/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding>
-                <element signature="e#24#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+            <state relative-caret-position="105">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -165,6 +136,13 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dashboard</find>
+      <find>thumbnail</find>
+      <find>users</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -176,11 +154,19 @@
         <option value="$PROJECT_DIR$/bookmarks/account/models.py" />
         <option value="$PROJECT_DIR$/bookmarks/account/urls.py" />
         <option value="$PROJECT_DIR$/bookmarks/account/views.py" />
-        <option value="$PROJECT_DIR$/bookmarks/bookmarks/urls.py" />
-        <option value="$PROJECT_DIR$/bookmarks/bookmarks/settings.py" />
         <option value="$PROJECT_DIR$/bookmarks/images/models.py" />
         <option value="$PROJECT_DIR$/bookmarks/images/forms.py" />
+        <option value="$PROJECT_DIR$/bookmarks/bookmarks/urls.py" />
+        <option value="$PROJECT_DIR$/bookmarks/images/admin.py" />
+        <option value="$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html" />
+        <option value="$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js" />
+        <option value="$PROJECT_DIR$/doc/CH5 在网站上分享内容.md" />
+        <option value="$PROJECT_DIR$/bookmarks/images/urls.py" />
         <option value="$PROJECT_DIR$/bookmarks/images/views.py" />
+        <option value="$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html" />
+        <option value="$PROJECT_DIR$/bookmarks/bookmarks/settings.py" />
+        <option value="$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html" />
+        <option value="$PROJECT_DIR$/bookmarks/account/templates/base.html" />
       </list>
     </option>
   </component>
@@ -190,10 +176,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="41" />
-    <option name="y" value="23" />
-    <option name="width" value="1228" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1719" />
+    <option name="y" value="389" />
+    <option name="width" value="1232" />
     <option name="height" value="777" />
   </component>
   <component name="ProjectView">
@@ -211,7 +197,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,19 +214,47 @@
               <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="account" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="account" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
               <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
@@ -266,11 +280,16 @@
               <item name="images" type="462c0819:PsiDirectoryNode" />
               <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="bookmarks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bookmarks" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,8 +301,8 @@
       <recent name="$PROJECT_DIR$/bookmarks/account" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/bookmarks/images" />
       <recent name="$PROJECT_DIR$/bookmarks" />
+      <recent name="$PROJECT_DIR$/bookmarks/images" />
       <recent name="$PROJECT_DIR$/bookmarks/account/templates" />
     </key>
   </component>
@@ -302,6 +321,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="a0f68bb2-765d-4b7b-9919-ba6c0c8d9960" name="Default" comment="" />
@@ -313,27 +335,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="23" width="1228" height="777" extended-state="6" />
+    <frame x="1719" y="389" width="1232" height="777" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34485665" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19495799" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24486804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -350,88 +372,175 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="5" lean-forward="false" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <marker date="1513589844000" expanded="true" signature="600:607" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="103" column="13" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/authentication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="750">
+          <caret line="50" column="68" lean-forward="true" selection-start-line="50" selection-start-column="12" selection-end-line="50" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="103" column="13" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/authentication.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <marker date="1513589844000" expanded="true" signature="600:607" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/doc/CH4 创建社交网站.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="-1019">
             <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding>
-              <marker date="1513584045000" expanded="true" signature="5060:5338" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5067:5189" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5196:5338" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5214:5261" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5280:5330" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5686:5766" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5873:6237" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="5933:6227" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="6051:6165" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="17373:17477" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="18502:18623" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="23630:23759" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="24635:24715" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="24909:25273" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="24969:25263" ph="..." />
-              <marker date="1513584045000" expanded="true" signature="25087:25201" ph="..." />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/CH5 在网站上分享内容.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-21072">
-            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-            <folding>
-              <marker date="1513243154000" expanded="true" signature="9635:9733" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="11747:11796" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="11877:11907" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="11913:13000" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="12479:12990" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="12584:12928" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="12622:12761" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="12767:12914" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="12934:12980" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="13351:13894" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="13408:13555" ph="{&quot;rel&quot;: 'stylesheet'...}" />
-              <marker date="1513243154000" expanded="true" signature="13847:13890" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="14438:14678" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="14524:14676" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="15038:15393" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="16986:17190" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="17004:17128" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="17033:17109" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="17224:17543" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="17297:17430" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="19092:19155" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="21286:21392" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="21322:21381" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="22764:22892" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="22910:23123" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="22957:23117" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="23028:23107" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="23160:23219" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="23859:24383" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="23869:24337" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="23898:24015" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="24061:24326" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="24906:25755" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="25003:25097" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="25121:25747" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="25162:25737" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="29585:30037" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="29633:29867" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="29757:29823" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="29894:30026" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="29960:30011" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="30282:30345" ph="..." />
-              <marker date="1513243154000" expanded="true" signature="30634:31212" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="30812:31205" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="30933:31192" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="30968:31030" ph="{...}" />
-              <marker date="1513243154000" expanded="true" signature="31054:31177" ph="{...}" />
-            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -453,11 +562,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/common/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/bookmarklet_launcher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -469,15 +614,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/base.html">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/account/register_done.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -487,11 +624,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/account/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="150">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -511,93 +645,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/account/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="180">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="26" column="16" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/account/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="102" column="15" lean-forward="false" selection-start-line="102" selection-start-column="15" selection-end-line="102" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+        <state relative-caret-position="300">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/settings.py">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="39" column="34" lean-forward="false" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+        <state relative-caret-position="1470">
+          <caret line="103" column="13" lean-forward="false" selection-start-line="103" selection-start-column="4" selection-end-line="103" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1512523736000" expanded="true" signature="600:607" ph="×" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="20" column="27" lean-forward="false" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bookmarks/images/forms.py">
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/account/dashboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="20" lean-forward="false" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
+        <state relative-caret-position="300">
+          <caret line="20" column="14" lean-forward="false" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/images/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="390">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/CH5 在网站上分享内容.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="404">
+            <caret line="1157" column="0" lean-forward="false" selection-start-line="1157" selection-start-column="0" selection-end-line="1157" selection-end-column="0" />
+            <folding>
+              <marker date="1514357719000" expanded="true" signature="9745:9843" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="15147:15690" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="15204:15351" ph="{&quot;rel&quot;: 'stylesheet'...}" />
+              <marker date="1514357719000" expanded="true" signature="15643:15686" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="21092:21155" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="31686:32138" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="31734:31968" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="31858:31924" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="31995:32127" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="32061:32112" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="32383:32446" ph="..." />
+              <marker date="1514357719000" expanded="true" signature="32735:33313" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="32913:33306" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="33034:33293" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="33069:33131" ph="{...}" />
+              <marker date="1514357719000" expanded="true" signature="33155:33278" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/images/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/create.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -605,13 +737,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/static/js/bookmarklet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="34" lean-forward="false" selection-start-line="28" selection-start-column="34" selection-end-line="28" selection-end-column="34" />
+          <folding>
+            <marker date="1513589844000" expanded="true" signature="600:607" ph="×" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/bookmarks/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="34" column="60" lean-forward="false" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bookmarks/images/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-374">
+          <caret line="45" column="36" lean-forward="false" selection-start-line="45" selection-start-column="36" selection-end-line="45" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/images/templates/images/image/list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../django/Django By Example/Django By Example-code/Django_By_Example_Code/Chapter 5/bookmarks/account/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="101" lean-forward="false" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bookmarks/account/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="17" column="17" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="17" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

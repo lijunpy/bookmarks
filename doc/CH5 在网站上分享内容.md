@@ -85,26 +85,27 @@ class Image(models.Model):
 
 这个模型用于保存从不同网站上得到的图片。让我们来看一下这个模型的字段：
 
-user: 为这个图片进行标记的User对象。这是一个外键，它指定了一个一对多关系。一个用户可以发布多张图片，但是每个图片只有一个用户。
+- user: 为这个图片进行标记的User对象。这是一个外键，它指定了一个一对多关系。一个用户可以发布多张图片，但是每个图片只有一个用户。
 
-title：图片的标题。
+- title：图片的标题。
 
-slug：只包括字母、数字、下划线或者连字符来创建SEO友好的URLs。
+- slug：只包括字母、数字、下划线或者连字符来创建SEO友好的URLs。
 
-url: 这个图片的原始url。
+- url: 这个图片的原始url。
 
-image：图片文件。
+- image：图片文件。
 
-describe:可选的图片描述。
+- describe:可选的图片描述。
 
-created：对象创建日期。由于我们使用了auto_now_add，当我们创建对象时会自动填充这个字段。我们使用db_index=True，这样Django将在数据库中为这个字段创建一个索引。
+- created：对象创建日期。由于我们使用了auto_now_add，当我们创建对象时会自动填充这个字段。我们使用db_index=True，这样Django将在数据库中为这个字段创建一个索引。
+
 
 > 注意：
 >
 > 数据库索引将改善查询表现。对于频繁使用filter()、exclude()、order_by()进行查询的字段要设置db_index=True。外键字段或者unique=True的字段会自动设置索引。还可以使用Meta.index_together来为多个字段创建索引。
 
 
-​     我们将重写Image模型的save()方法，来根据title字段自动生成slug字段。导入slugify()函数并为Image模型添加save()方法（还可以在admin网站中使用prepopulated_field告诉Django输入title时自动生成slug）：
+​     我们将重写Image模型的save()方法，根据title字段自动生成slug字段。导入slugify()函数并为Image模型添加save()方法：
 
 ```python
 # -*- coding: utf-8 -*-
@@ -132,9 +133,13 @@ class Image(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-            super(Image, self).save(*args, **kwargs)
+        super(Image, self).save(*args, **kwargs)
 
 ```
+
+> 注意：
+>
+> 在前三章的blog项目中，是在admin网站中使用prepopulated_field实现输入title时自动生成slug。
 
 在这个代码中，如果用户没有提供slug，我们将slufigy()函数根据标题自动生成图像的slug。然后，我们保存对象。我们将自动生成slug，这样用户就不需要为每张图片填写slug字段了。
 
@@ -199,7 +204,7 @@ from .models import Image
 
 # Register your models here.
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ['titile', 'slug', 'image', 'created']
+    list_display = ['title', 'slug', 'image', 'created']
     list_filter = ['created']
 
 
@@ -208,6 +213,10 @@ admin.site.register(Image, ImageAdmin)
 ```
 
 使用python manage.py runserver运行开发服务器。在浏览器中打开http://127.0.0.1:8000/admin，将在Admin网站中看到Image模型：
+
+![image_admin](figures/CH5/image_admin.png)
+
+
 
 ## 发布其他网站上的内容
 
@@ -257,7 +266,7 @@ def clean_url(self):
 
 ModelForm提供一个save()方法来将当前模型实例保存到数据库中并返回该模型对象。这个方法接收一个布尔参数commit，这个参数指定是否需要提交到数据库。如果commit为False，save()方法将返回一个模型实例但是并不保存到数据库。我们将重写表单的save()方法来获得给定图片并保存。
 
-在forms.py文件的开头部分添加以下imports：
+在forms.py文件的开头部分导入以下模块：
 
 ```python 
 from requests import request
@@ -359,7 +368,7 @@ urlpatterns = [url(r'^admin/', admin.site.urls),
 
 最后，我们需要新建模板来渲染表单。在image应用目录下新建下面的目录：
 
-
+![create_menu](figures/CH5/create_menu.png)
 
 编辑create.html模板并添加以下代码：
 
@@ -387,41 +396,82 @@ urlpatterns = [url(r'^admin/', admin.site.urls),
 
 ###使用jQuery创建bookmarklet
 
-bookmarklet是浏览器中使用JavaScript代码扩展浏览器功能的书签。当你点击书签时，JavaScript代码将在浏览器显示的当前网页执行。这对于创建与其他网站进行交互的工具非常有帮助。
+bookmarklet 是浏览器中使用 JavaScript 代码扩展浏览器功能的书签。当你点击书签时，JavaScript 代码将在浏览器显示的当前网页执行。这对于创建与其他网站进行交互的工具非常有帮助。
 
-一些在线服务（比如Pinterest）执行自己的bookmarklet帮助用户将其他网站的内容分享到自己的平台上。我们将以相似的方式创建一个bookmarklet来帮助用户将从其它网站得到的图片分享到我们的网站上。
+一些在线服务（比如 Pinterest ）执行自己的 bookmarklet 帮助用户将其他网站的内容分享到自己的平台上。我们将以相似的方式创建一个 bookmarklet 来帮助用户将从其它网站得到的图片分享到我们的网站上。
 
-我们将使用jQuery实现bookmarklet。JQuery是一个用于快速开发客户端功能的JavaScript框架。你可以从它的网站上了解更多内容：http://jquery.com/。
+我们将使用 jQuery 实现 bookmarklet 。JQuery 是一个用于快速开发客户端功能的 JavaScript 框架。你可以从它的网站上了解更多内容：http://jquery.com/。
 
-下面是用户将如何在自己的浏览器中添加bookmarklet并使用：
+下面是用户将如何在自己的浏览器中添加 bookmarklet 并使用：
 
-1. 用户将链接拖到他的浏览器书签。链接在它的href属性中包含JavaScript代码。这些代码将被保存到书签中。
+1. 用户从你的网站拖动一个链接到自己的浏览器书签。该链接的href属性中包含 JavaScript 代码。这些代码将被保存到书签中。
 
-2. 用户浏览任何网站并点击书签，书签的JavaScript代码将执行。
+2. 用户浏览任何网站并点击书签，执行书签的 JavaScript 代码。
 
-由于JavaScript以书签的形式保存，你在之后无法对其进行更新。这个一个很重大的缺陷，但是可以通过执行简单的启动脚本从URL加载JavaScript代码来解决这个问题。你的用户将以书签的形式保存这个启动脚本，这样你可以在任意时刻更新bookmarklet。这是我们创建bookmarklet时采用的方法，让我们开始吧！
+由于 JavaScript 以书签的形式保存，你在之后无法对其进行更新。这个一个重大缺陷，但是可以通过执行简单的启动脚本从 URL 加载 JavaScript 代码来解决这个问题。你的用户将以书签的形式保存这个启动脚本，这样你可以在任意时刻更新 bookmarklet 。这是我们创建bookmarklet时采用的方法，让我们开始吧！
 
-在image/templates/中新建模板并命名为marklet_launcher.js。这将是一个启动脚本，在脚本中添加以下JavaScript代码：
+在image/templates/中新建模板并命名为 bookmarklet_launcher.js 。这将是一个启动脚本，在脚本中添加以下JavaScript代码：
+
+```JavaScript
+(function () {
+    if (window.myBookmarklet !== undefined) {
+        myBookmarklet();
+    }
+    else {
+        document.body.appendChild(document.createElement('script')).src = 'http://127.0.0.1:8000/static/js/bookmarklet.js?r=' + Math.floor(Math.random() * 99999999999999999999);
+    }
+})();
 
 
+```
 
-这个脚本通过检查是否定义了myBookmarklet变量来判断是否加载了bookmarklet。这样我们可以在用户重复点击bookmarklet的时候避免重复加载。如果没有定义myBookmarklet，我们加载另外一个JavaScript文件并向文件添加一个<script>元素。script标签使用随机数作为参数加载bookmark.js脚本以避免从浏览器缓存中加载文件。
+这个脚本通过检查是否定义了 myBookmarklet 变量来判断是否加载了 bookmarklet 。这样我们可以在用户重复点击 bookmarklet 的时候避免重复加载。如果没有定义 myBookmarklet ，我们加载另外一个 JavaScript 文件并向文件添加一个 <script> 元素。script 标签使用随机数作为参数加载 bookmark.js 脚本以避免从浏览器缓存中加载文件。
 
-真正的bookmarklet代码位于bookmarklet.js静态文件中。这将实现用户无需更新之前添加到浏览器中的书签即可更新bookmarklet代码的功能。我们将bookmarklet启动脚本添加到dashboard页面，这样用户可以拷贝到自己的书签中。
+真正的 bookmarklet 代码位于 bookmarklet.js 静态文件中。这将实现用户无需更新之前添加到浏览器中的书签即可更新 bookmarklet 代码的功能。我们将 bookmarklet 启动脚本添加到 dashboard 页面，这样用户可以拷贝到自己的书签中。
 
-编辑account应用中的account/dashboard.html模板，最终模板的代码为：
+编辑 account 应用中的 account/dashboard.html 模板，最终模板的代码为：
 
+```HTML
+{% extends "base.html" %}
 
+{% block title %}Dashboard{% endblock %}
 
-拖到Bookmark it！连接到浏览器的书签工具条。
+{% block content %}
+    <h1>Dashboard</h1>
+    {% with total_image_created=request.user.images_created.count %}
+        <p>Welcome to your dashboard.You have
+            bookmarked {{ total_images_created }}
+            image{{ total_images_created|pluralize }}.</p>
+    {% endwith %}
+    <p>Drag the following button to your bookmarks toolbar to bookmark image
+        from other
+        websites → <a href="javascript:{% include "bookmarklet_launcher.js" %}"
+                      class="button">Bookmark it</a><p>
+
+    <p>You can also
+        <a href="{% url "account:edit" %}">edit your profile</a> or
+        <a href="{% url "account:password_change" %}">change your password</a>.
+    </p>
+{% endblock %}
+```
+
+现在dashboard显示用户标记的图片总数。我们使用{% with %}标签来设置表示当前用户标记的图片总数的变量。这里还包括一个href属性包括bookmarklet加载脚本的链接，我们从bookmarklet_launcher.js模板加载JavaScript代码。
+
+在浏览器中打开http://127.0.0.1/account/，应该可以看到下面的页面：
+
+![bookmark_it](figures/CH5/bookmark_it.png)
+
+将 Bookmark it！拖到你的浏览器的书签工具条中。
+
+![bookmark_it_toolbar](figures/CH5/bookmark_it_toolbar.png)
 
 现在在images应用目录下创建以下目录和文件：
 
+![bookmarklet_js](figures/CH5/bookmarklet_js.png)
 
+在本章代码中找到images application 目录下的 static/css 目录并将 css 目录拷贝到你的代码的 static 目录下， css/bookmarklet.css 文件为我们的 JavaScript bookmarklet 提供格式。
 
-在本章代码中找到images application 目录下的static/css目录并将css目录拷贝到你的代码的static目录下，css/bookmarklet.css文件为我们的JavaScript bookmarklet提供格式。
-
-编辑bookmarklet.js静态文件并添加以下JavaScript代码：
+编辑 bookmarklet.js 静态文件并添加以下 JavaScript 代码：
 
 ```javascript
 (function () {
@@ -444,7 +494,7 @@ bookmarklet是浏览器中使用JavaScript代码扩展浏览器功能的书签�
         // Create the script and point to Google API
         var script = document.createElement('script');
         script.setAttribute('src',
-            'http://ajax.googleapis.com/ajax/libs/jquery/' +
+            'https://cdn.staticfile.org/jquery/' +
             jquery_version + '/jquery.min.js');
         // Add the script to the 'head' for processing
         document.getElementsByTagName('head')[0].appendChild(script);
@@ -468,15 +518,20 @@ bookmarklet是浏览器中使用JavaScript代码扩展浏览器功能的书签�
 })()
 ```
 
-这是主要的jQuery加载器脚本。如果已经加载则在当前网站则使用jQuery，如果没有则从Google CDN中下载JQuery。当JQuery加载后，它将执行内置bookmarklet代码的bookmarklet()函数，我们还在文件头部设置了一些变量：
+> 注意:
+>
+> 代码中原文为http://ajax.googleapis.com/ajax/libs/jquery/，由于国内无法使用google，改成了https://cdn.staticfile.org/jquery/。
 
-jquery_version：要加载的jQuery代码；
+这是主要的 jQuery 加载器脚本。如果已经加载则在当前网站则使用 jQuery ，如果没有则从 staticfile (原文为Google） CDN 中下载 jQuery 。当 jQuery 加载后，它将执行 bookmarklet 代码中的 bookmarklet() 函数，我们还在文件头部设置了一些变量：
 
-site_url和static_url：网站的基础URL和静态文件的基础URL。
+- jquery_version：要加载的 jQuery 代码；
 
-min_width和min_height：bookmarklet在网站中查找图片的最小宽度像素和最小高度像素
+- site_url 和 static_url ：网站的基础URL 和静态文件的基础URL 。
 
-现在，我们来执行bookmarklet函数，编辑bookmarklet()函数：
+- min_width 和 min_height ：bookmarklet 在网站中查找图片的最小宽度像素和最小高度像素。
+
+
+现在，我们来执行 bookmarklet 函数，编辑 bookmarklet() 函数：
 
 ```javascript
 function bookmarklet(msg) {
@@ -502,11 +557,11 @@ function bookmarklet(msg) {
 
 这些代码是这样工作的：
 
-1. 使用随机数作为参数加载bookmarket.css样式以避免浏览器缓存。
+1. 使用随机数作为参数加载 bookmarket.css 样式以避免浏览器缓存。
 
-2. 向当前网站的<body>元素中添加自定义HTML。它包含一个<div>元素来存放在当前网站中找到的图片。
+2. 向当前网站的<body>元素中添加自定义 HTML 。它包含一个<div>元素来存放在当前网站中找到的图片。
 
-3. 添加一个事件，该事件用于用户点击HTML块的关闭链接移除我们在当前网站中添加的HTML。我们使用#bookmarklet #close选择器来找到HTML元素中名为close的ID，这个ID的父元素的ID名称为bookmarklet。可以通过一个JQuery选择器找到HTML元素。一个JQuery选择器返回给定的CSS选择器找到的所有元素。你可以从以下网站找到JQuery选择器列表http://api.jquery.com/category/selectors/。
+3. 添加一个事件，该事件用于用户点击HTML块的关闭链接移除我们在当前网站中添加的HTML。我们使用#bookmarklet #close 选择器来找到HTML元素中名为 close 的 ID ，这个ID的父元素的ID名称为bookmarklet。可以通过一个JQuery选择器找到HTML元素。一个JQuery选择器返回给定的CSS选择器找到的所有元素。你可以从以下网站找到JQuery选择器列表http://api.jquery.com/category/selectors/。
 
 为bookmarklet加载完CSS样式和HTML代码后，我们需要在网站中找到图片。在bookmarklet()函数底部添加以下JavaScript代码：
 
@@ -548,15 +603,17 @@ jQuery('#bookmarklet .images a').click(function (e) {
 3. 隐藏bookmarklet并使用URL打开一个新的浏览器窗口在我们的网站中编辑一个新的图片。我们以网站的<title>元素和选中的图片URL作为参数调用网站的GET方法。
 
 
-在浏览器中打开一个网站并点击你的bookmarklet。你将看到一个新的白色盒子出现在网站中，他包含了网站中所有大于100*100px的照片。应该与下面例子中的样子很像：
+在浏览器中打开一个网站并点击你的bookmarklet。你将看到一个新的白色盒子出现在网站中，他包含了网站中所有大于100*100px的照片。应该是下面例子中的样子：
 
 
 
-由于我们使用的是Django开发服务器，并且通过HTTP为网页提供服务，由于浏览器的安全机制，bookmarklet将无法在HTTPS的网站中工作。
+![bookmarked_figure](figures/CH5/bookmarked_figure.png)
+
+由于我们使用的是 Django 开发服务器，并且通过 HTTP 为网页提供服务，由于浏览器的安全机制，bookmarklet将无法在 HTTPS 网站中工作。
 
 如果你点击一个图片，你将重定向到图片创建页面，输入网站的title和选择图片的描述作为GET参数：
 
-
+![bookmarked_figure_add](figures/CH5/bookmarked_figure_add.png)
 
 祝贺你，这是你的第一个JavaScript bookmarklet，而且它已经继承到你的Django项目中了。
 
@@ -634,6 +691,12 @@ def get_absolute_url(self):
 
 现在使用bookmarklet标记一副新的图片。当你提交图片后将重定向到图片详情页面。这个页面将包含如下的success信息。
 
+![bookmark_it_figure_added](figures/CH5/bookmark_it_figure_added.png)
+
+
+
+
+
 ## 使用sorl-thumbnail实现图片缩略图
 
 我们在详情页面展示原始图片，但是不同图片的尺寸可能差别较大。而且一些图片的原始文件可能很大，加载它们可能需要很多时间。最好的方法展示使用相同的方法生成的缩略图。我们将使用Django应用sorl-thumbnail来实现缩略图。
@@ -656,7 +719,7 @@ INSTALLED_APPS = ['account',
                   'django.contrib.staticfiles',
                   'social_django',
                   'images',
-                  'sorl']
+                  'sorl.thumbnail']
 ```
 
 然后运行下面的命令来同步数据库。
@@ -669,12 +732,12 @@ python manage.py migrate
 
 ```
 Operations to perform:
-  Apply all migrations: account, admin, auth, contenttypes, images, sessions, social_django
+  Apply all migrations: account, admin, auth, contenttypes, images, sessions, social_django, thumbnail
 Running migrations:
-  No migrations to apply.
+  Applying thumbnail.0001_initial... OK
 ```
 
-注意，这里没有同步任何数据库表，这与django by example不同。
+
 
 sorl提供不同的方法定义图像缩略图。它提供一个{% thumbnail %}模板标签来在模板中生成缩略图，还可以使用自定义ImageField在模板中定义缩略图。我们将使用模板标签的方法。编辑image/image/detail.html模板将以下行：
 
@@ -696,6 +759,8 @@ sorl提供不同的方法定义图像缩略图。它提供一个{% thumbnail %}�
 现在，我们定义了宽度为300像素的缩略图。用户第一次加载页面时将会创建一个缩略图。生成的缩略图将用于后面的请求。输入python manage.py runserver命令运行开发服务器并访问一个存在的图片的图片详细信息页面，将会生成该图片的缩略图并在网站上展示。
 
 sorl-thumbnail应用提供几个自定义缩略图的选项，包括图片剪裁算法和可以应用的不同效果。如果生成缩略图时遇到了困难，可以在settings.py中设置THUMBNAIL=True来得到调试信息。sorl-thumbnail的完整文档链接为http://sorl-thumbnail.readthedocs.org/。
+
+
 
 ## 使用jQuery添加AJAX动作
 
@@ -749,7 +814,7 @@ url(r'^like/$',views.image_like,name='like'),
 我们需要在image详细信息模板中添加AJAX函数。为了在模板中使用jQuery，我们首先将在base.html模板中加载它。编辑account应用中的base.html模板并在底端的</boday>HTML标签前添加以下代码：
 
 ```html
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         {% block domready %}
@@ -784,7 +849,7 @@ url(r'^like/$',views.image_like,name='like'),
 编辑我们上次在base.html中添加的代码，使它看起来是这样的:
 
 ```javascript
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js"></script>
 <script src=" http://cdn.jsdelivr.net/jquery.cookie/1.4.1/jquery.cookie.min.js "></script>
 <script>
     var csrftoken = $.cookie('csrftoken');
@@ -817,7 +882,11 @@ url(r'^like/$',views.image_like,name='like'),
 
 CSRF令牌将用在所有使用不安全的HTTP方法(比如POST、PUT)的AJAX请求中。
 
+
+
 ### 使用jQuery实现AJAX请求
+
+
 
 编辑image应用的images/image/details.html模板并将以下行：
 
@@ -911,11 +980,11 @@ data-action: 用户点击链接时执行的动作，可以是like或者unlike。
 
 在浏览器中打开你已经上传的图片的图片详细页面，你应该可以看到下面的初始喜欢数量和LIKE按钮：
 
-
+![ajax_0](figures/CH5/ajax_0.png)
 
 点击LIKE按钮。你将看到总的喜欢数量增加了一个而且按钮变成了UNLIKE：
 
-
+![ajax_0](figures/CH5/ajax_1.png)
 
 当你点击UNLIKE按钮后按钮变回LIKE并且总的喜欢数量相应发生改变。
 
@@ -931,9 +1000,9 @@ data-action: 用户点击链接时执行的动作，可以是like或者unlike。
 
 由于装饰器是通用的，它可以用于任意视图上。我们将在项目中创建一个common Python文件。在bookmarket项目下新建以下文件结构：
 
+![decorators_str](figures/CH5/decorators_str.png)
 
-
-编辑decorators.py文件并添加以下代码：
+编辑 decorators.py 文件并添加以下代码：
 
 ```python 
 from django.http import HttpResponseBadRequest
@@ -1116,15 +1185,19 @@ url(r'^/$', views.image_list, name='list'),
 
 
 
-
+![image_list](figures/CH5/image_list.png)
 
 滚动到页面的底部来加载剩下的页面。确保你使用bookmarklet标记的图片多于8张，那是我们一页显示的图片数量。记得你可以使用Firebug或类似工具来追踪AJAX请求和调试JavaScript代码。
 
-最后，编辑account应用的base.html模板并为主目录的Image记录添加URL：
+最后，编辑account应用的base.html模板并为主目录的Image 目录添加到图片列表的链接：
 
+```HTML
+<li {% ifequal section "images" %}class="selected"{% endifequal %}>
+    <a href="{% url 'images:list' %}" >Images</a>
+</li>
+```
 
-
-现在可以从主目录访问图片列表了。
+现在可以点击主目录的images访问图片列表了。
 
 ## 总结
 

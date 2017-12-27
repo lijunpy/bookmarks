@@ -22,12 +22,11 @@
                 page += 1;
                 $.get('?page=' + page, function(data) {
                 if(data == '') {
-                    empty_page = true;
-                }
+                    empty_page = true;}
                 else {
                     block_request = false;
-                    $('#image-list').append(data);
-                    }
-            });
+                    $('#image-list').append(data);}
+                });
+        }imag
     });
 {% endblock %}
