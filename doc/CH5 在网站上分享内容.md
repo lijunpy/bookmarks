@@ -338,6 +338,8 @@ def image_create(request):
 
 ```
 
+
+
 我们为image_create视图添加了login_required装饰器来防止没有权限的用户访问。下面是视图的工作方法:
 
 1. 我们通过GET方法得到初始数据来创建表单实例。这个数据将包含从外部网站获得的图片的url和title属性并通过我们之后创建的JavaScript工具的GET方法提供，这里我们只是假设在这里获得初始化数据。
@@ -609,13 +611,19 @@ jQuery('#bookmarklet .images a').click(function (e) {
 
 ![bookmarked_figure](figures/CH5/bookmarked_figure.png)
 
+
+
 由于我们使用的是 Django 开发服务器，并且通过 HTTP 为网页提供服务，由于浏览器的安全机制，bookmarklet将无法在 HTTPS 网站中工作。
+
+> 测试提示:
+>
+> http://www.lanrentuku.com/#
 
 如果你点击一个图片，你将重定向到图片创建页面，输入网站的title和选择图片的描述作为GET参数：
 
 ![bookmarked_figure_add](figures/CH5/bookmarked_figure_add.png)
 
-祝贺你，这是你的第一个JavaScript bookmarklet，而且它已经继承到你的Django项目中了。
+祝贺你，这是你的第一个JavaScript bookmarklet，而且它已经集成到你的Django项目中了。
 
 ## 为图片创建一个详细视图
 
@@ -695,8 +703,6 @@ def get_absolute_url(self):
 
 
 
-
-
 ## 使用sorl-thumbnail实现图片缩略图
 
 我们在详情页面展示原始图片，但是不同图片的尺寸可能差别较大。而且一些图片的原始文件可能很大，加载它们可能需要很多时间。最好的方法展示使用相同的方法生成的缩略图。我们将使用Django应用sorl-thumbnail来实现缩略图。
@@ -755,6 +761,10 @@ sorl提供不同的方法定义图像缩略图。它提供一个{% thumbnail %}�
     </a>
 {% endthumbnail %}
 ```
+
+> 测试提示：
+>
+> 如果对这里的图片进行 bookmarkit 标记，则会在 image 的 create页面出现 URL 无效错误，这是由于 ImageCreateForm 的 url 字段为 URLField ，缩略图生成的 im 的 url 为内部地址，无法满足 URLField 的有效性验证。
 
 现在，我们定义了宽度为300像素的缩略图。用户第一次加载页面时将会创建一个缩略图。生成的缩略图将用于后面的请求。输入python manage.py runserver命令运行开发服务器并访问一个存在的图片的图片详细信息页面，将会生成该图片的缩略图并在网站上展示。
 
@@ -1158,7 +1168,7 @@ url(r'^/$', views.image_list, name='list'),
 {% endblock %}
 ```
 
-这段代码实现了无限滚动功能。我们在base.html中定义的demready块中包含了JavaScript代码，代码实现的功能包括：
+这段代码实现了无限滚动功能。我们在base.html中定义的domready块中包含了JavaScript代码，代码实现的功能包括：
 
 1. 定义以下变量：
 

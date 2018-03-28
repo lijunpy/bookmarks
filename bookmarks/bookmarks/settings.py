@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = ['account', 'django.contrib.admin', 'django.contrib.auth',
                   'django.contrib.contenttypes', 'django.contrib.sessions',
                   'django.contrib.messages', 'django.contrib.staticfiles',
-                  'social_django', 'images', 'sorl.thumbnail']
+                  'social_django', 'images.apps.ImagesConfig', 'sorl.thumbnail','actions']
 
 MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',
               'django.contrib.sessions.middleware.SessionMiddleware',
@@ -41,7 +41,6 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',
               'django.contrib.auth.middleware.AuthenticationMiddleware',
               'django.contrib.messages.middleware.MessageMiddleware',
               'django.middleware.clickjacking.XFrameOptionsMiddleware', ]
-
 
 # AUTHENTICATION_BACKENDS = (
 #     'social_core.backends.'
@@ -115,3 +114,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+#
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('account:user_detail', args=[u.username])}
+
+# redis config
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0

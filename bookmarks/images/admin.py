@@ -8,8 +8,9 @@ from .models import Image
 
 # Register your models here.
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'slug', 'image', 'created']
+    list_display = ['id','title', 'slug', 'image', 'created']
     list_filter = ['created']
+    list_editable = ['title']
 
 
 admin.site.register(Image, ImageAdmin)

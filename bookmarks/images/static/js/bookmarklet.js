@@ -28,12 +28,14 @@
         jQuery.each(jQuery('img[src$="jpg"]'), function (index, image) {
             if (jQuery(image).width() >= min_width && jQuery(image).height() >= min_height) {
                 image_url = jQuery(image).attr('src');
+                console.log('image_url',image_url);
                 jQuery('#bookmarklet .images').append('<a href="#"><img src="' + image_url + '" /></a>');
             }
         });
         // when an image is selected open URL with it
         jQuery('#bookmarklet .images a').click(function (e) {
             selected_image = jQuery(this).children('img').attr('src');
+            console.log('selected image:',selected_image);
             // hide bookmarklet
             jQuery('#bookmarklet').hide();
             // open new window to submit the image
